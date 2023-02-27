@@ -1,9 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-# from players.py import players 
 
-# print()
 engine = create_engine('sqlite:///users.db', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
