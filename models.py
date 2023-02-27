@@ -1,11 +1,12 @@
-import sqlite3
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+# from players.py import players 
 
-conn = sqlite3.connect('users.db')
-cursor = conn.cursor()
-
+# print()
 engine = create_engine('sqlite:///users.db', echo=False)
+Session = sessionmaker(bind=engine)
+session = Session()
 Base = declarative_base()
 
 class User(Base):
@@ -18,32 +19,8 @@ class User(Base):
     def __repr__(self):
         return f'<User, name:{self.name}, fullname:{self.fullname}, nickname:{self.nickname} >'
 
-
-    def add_name(self, new_name):
-        sql = f"""
-        INSERT INTO users (name)
-        VALUES ('{new_name}')
-        """
-        cursor.execute(sql)
-        conn.commit()
-
-    def delete_user(self, id):
-        sql = f"""
-        DELETE FROM users
-        WHERE id = ?
-        """    
-        cursor.execute(sql, (id))
-        conn.commit()
-
-
 if __name__ == '__main__':
-    Base.metadata.create_all(engine)
-
-
-
-# print('engine:', engine)
-# print('create_engine:', create_engine)
-# print('declarative_base:', declarative_base)
-# print(sqlite3)
-# print(User().add_name('Jack Hughes'))
-print(User().delete_user('4'))
+# Base.metadata.create_all(engine)
+    jack_hughes_user = User(name='Jack Hughes', fullname='Yaakov Hughes', nickname='Silky Smooth Hughes')
+    session.add(jack_hughes_user)
+    session.commit()
