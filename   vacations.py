@@ -34,17 +34,12 @@ if __name__ == '__main__':
      activity5.location = [location3, location4]
      activity6.location = [location1]
 
-     print(f'These are the activities in "{location4.location}":')
-     activity_counter = 1
-     for activity in location4.activities:
-         print(f'{activity_counter}: {activity.activity}')
-         activity_counter += 1
+     print(f'These are the activities in (the) "{location3.location}":')
+     for i, activity in enumerate(location3.activities):
+         print(f'{i}: {activity.activity}')
          
      print()
 
      print(f'These are the locations that have "{activity1.activity}":')
-     location_counter = 1
-     for location in activity1.location:
-         print(f'{location_counter}: {location.location}')
-         location_counter += 1
-
+     for i, location in enumerate(activity1.location):
+         print(f'{i}: {location.location}')
