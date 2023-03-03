@@ -21,31 +21,16 @@ class User(Base):
     def __repr__(self):
         return f"<User, username: {self.username} password: {self.password}>" 
     
-# verify if user is in table
+# funcion to verify if user is in table
 def verify_user(username, password):
+    counter = 0
     result = session.query(User).filter_by(username=username, password=password).first()
     if result:
         print("Welcome!")
     else:
-        print("Sorry, that username and password do not exist!")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# if __name__ == '__main__':
-#         Base.metadata.create_all(engine)
-
-#         user1 = User(username='flat', password='iron')
-#         session.add(user1)
-#         session.commit()
-#         session.close()
+        while counter < 5:
+            print("Sorry, that username and password do not exist! Please try again!")
+        else:
+            print("Sorry, that username and password do not exist!")
+    counter += 1
+    
