@@ -1,5 +1,4 @@
-from user_info import User, session
-
+from user_info import User, session, verify_user   
 
 def account_initilization():
     first_choice = input("""
@@ -13,6 +12,7 @@ def account_initilization():
     elif first_choice == '2':
         existing_user_username = input("Please enter your username: ")
         existing_user_password = input("Please enter your password: ")
+        verify_user(existing_user_username, existing_user_password)
 
 if __name__ == '__main__':
     account_initilization()
