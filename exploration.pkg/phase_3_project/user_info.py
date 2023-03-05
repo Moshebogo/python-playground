@@ -23,14 +23,10 @@ class User(Base):
     
 # funcion to verify if user is in table
 def verify_user(username, password):
-    counter = 0
     result = session.query(User).filter_by(username=username, password=password).first()
     if result:
         print("Welcome!")
     else:
-        while counter < 5:
-            print("Sorry, that username and password do not exist! Please try again!")
-        else:
-            print("Sorry, that username and password do not exist!")
-    counter += 1
+        print("Sorry, that username and password do not exist! Please try again!")
+
     
