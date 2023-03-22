@@ -16,7 +16,7 @@ class Car_builder:
 
     def __repr__(self):
         if self.options != None:
-                return 'The Car has no options at the moment!'        
+                return 'The <Car > has no options at the moment!'        
         else:
             print('The(se) are the option(s)')
             for option in self.options:
@@ -35,7 +35,7 @@ class Car_builder:
 
         for option in self.options:
             print(f'{option:15} ${self.car_options[option]}')
-        print('---------------------')    
+        print('-' * 21)    
         print(f'{"Total:":15} ${int(total)}')
 
 
@@ -44,5 +44,5 @@ car1 = Car_builder()
 
 
 if __name__ == '__main__':
-    # print(car1)
+    print(car1)
     car1.print_receipt(7, 20)
