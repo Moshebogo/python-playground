@@ -1,6 +1,5 @@
 from pytube import YouTube
 from sys import argv
-
 # the video to download
 link = argv[1]
 # the instance of the YouTube class
